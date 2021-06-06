@@ -1,0 +1,12 @@
+﻿@page "/challenge/{ChallengeId}"
+
+@if (@Challenge != null)
+{
+	<h1>@Challenge.Name</h1>
+	<h3>@Challenge.Description </h3>
+}
+else
+{
+	<h1>Loading...</h1>
+	<h3>Loading...</h3>
+};

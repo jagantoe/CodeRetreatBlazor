@@ -1,0 +1,13 @@
+﻿.map {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 100%;
+    height: 100%;
+}
+
+.map-item {
+    display: flex;
+    justify-content: center;
+    background-image: url('./assets/map.png');
+    background-repeat: round;
+}
