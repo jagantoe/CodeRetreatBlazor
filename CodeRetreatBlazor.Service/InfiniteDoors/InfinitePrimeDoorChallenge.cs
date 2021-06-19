@@ -45,9 +45,10 @@
             InfinitePrimeDoorLevel = new InfinitePrimeDoorLevel(CurrentLevel);
         }
 
-        private void Complete()
+        public void Complete()
         {
             Completed = true;
+            InfinitePrimeDoorLevel.Doors.Clear();
         }
     }
 }

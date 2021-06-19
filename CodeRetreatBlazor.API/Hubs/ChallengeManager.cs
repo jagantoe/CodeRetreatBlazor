@@ -39,10 +39,10 @@ namespace CodeRetreatBlazor.API.Hubs
         public ChallengeWrapper<TChallenge> GetChallengeWrapper(string connectionId)
         {
             var connection = Connections.SingleOrDefault(c => c.ConnectionId == connectionId);
-            return ChallengeWrappers.SingleOrDefault(c => c.ChallengeId == connection.ChallengeId && c.TeamId == connection.TeamId);
+            return connection.ChallengeWrapper;
         }
 
-        public void RemoveLessonAndGroup(ChallengeWrapper<TChallenge> ChallengeWrapper)
+        public void RemoveChallengeAndConnections(ChallengeWrapper<TChallenge> ChallengeWrapper)
         {
             Connections.RemoveAll(c => c.ChallengeId == ChallengeWrapper.ChallengeId && c.TeamId == ChallengeWrapper.TeamId);
             ChallengeWrappers.Remove(ChallengeWrapper);

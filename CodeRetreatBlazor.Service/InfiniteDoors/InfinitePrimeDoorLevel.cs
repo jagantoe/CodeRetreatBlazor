@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CodeRetreatBlazor.Service.Shared;
+using System;
 using System.Collections.Generic;
 
 namespace CodeRetreatBlazor.Service.InfiniteDoors

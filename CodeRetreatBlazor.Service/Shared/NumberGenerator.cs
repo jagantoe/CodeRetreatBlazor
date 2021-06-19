@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CodeRetreatBlazor.Service.InfiniteDoors
+namespace CodeRetreatBlazor.Service.Shared
 {
     public static class NumberGenerator
     {

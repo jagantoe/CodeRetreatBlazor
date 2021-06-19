@@ -9,8 +9,4 @@
     <ProjectReference Include="..\CodeRetreatBlazor.Domain\CodeRetreatBlazor.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="RoundRobin\" />
-  </ItemGroup>
-
 </Project>
