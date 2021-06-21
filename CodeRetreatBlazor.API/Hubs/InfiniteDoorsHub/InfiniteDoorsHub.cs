@@ -22,6 +22,7 @@ namespace CodeRetreatBlazor.API.Hubs.InfiniteDoorsHub
                 {
                     Score.CompleteChallenge();
                 }
+                Save();
             }
 
             await Clients.Caller.SendAsync("Doors", Level);

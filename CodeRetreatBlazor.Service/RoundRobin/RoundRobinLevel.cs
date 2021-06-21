@@ -1,12 +1,9 @@
 ﻿using CodeRetreatBlazor.Service.Shared;
 using System;
-using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CodeRetreatBlazor.Service.RoundRobin
 {
@@ -25,7 +22,7 @@ namespace CodeRetreatBlazor.Service.RoundRobin
 
         private void GenerateKeys()
         {
-            var amountOfKeys = Math.Pow(2, Level + 2);
+            var amountOfKeys = Math.Pow(2, Level + 2); // Level 1: 8 Keys | Level 2: 16 keys | Level 3: 32 keys | Level 4: 63 keys | Level 5: 128 keys
             for (int i = 0; i < amountOfKeys; i++)
             {
                 Keys.Add(NumberGenerator.GetPrimeNumber());
@@ -37,23 +34,24 @@ namespace CodeRetreatBlazor.Service.RoundRobin
             var sets = supersets.SelectMany(s => s).ToArray();
             var keys = sets.SelectMany(s => s).ToArray();
 
-            if (CheckTotalAmountOfMatches() && CheckAllTeamsThere() && CheckAmountOfMatches() && CheckDuplicateMatches())
+            if (CheckTotalAmountOfCombinations() && CheckAllKeysThere() && CheckAmountOfCombinations() && CheckDuplicateCombinations())
             {
                 return true;
             }
             return false;
-            bool CheckAllTeamsThere()
+
+            bool CheckAllKeysThere()
             {
-                return keys.OrderBy(k => k).SequenceEqual(keys.Distinct().OrderBy(k => k));
+                return Keys.OrderBy(k => k).SequenceEqual(keys.Distinct().OrderBy(k => k));
             }
-            bool CheckAmountOfMatches()
+            bool CheckAmountOfCombinations()
             {
-                var keyscount = keys.Length;
+                var keyscount = keys.Count();
                 var keysCounter = new ConcurrentDictionary<int, int>();
                 var expectedResult = Keys.Count - 1;
                 for (int i = 0; i < keyscount; i++)
                 {
-                    keysCounter.AddOrUpdate(keys[i], 1, (key, oldvalue) => oldvalue++);
+                    keysCounter.AddOrUpdate(keys[i], 1, (key, oldvalue) => { return oldvalue + 1; });
                 }
                 foreach (var (key, value) in keysCounter)
                 {
@@ -64,15 +62,15 @@ namespace CodeRetreatBlazor.Service.RoundRobin
                 }
                 return true;
             }
-            bool CheckTotalAmountOfMatches()
+            bool CheckTotalAmountOfCombinations()
             {
-                var expectedResult = Keys.Count * (Keys.Count - 1);
+                var expectedResult = (Keys.Count * (Keys.Count - 1)) / 2;
                 return sets.Count() == expectedResult;
             }
-            bool CheckDuplicateMatches()
+            bool CheckDuplicateCombinations()
             {
-                var expectedResult = Keys.Count * (Keys.Count - 1);
-                return sets.Distinct<int[]>(new ArrayComparer()).Count() == expectedResult;
+                var expectedResult = (Keys.Count * (Keys.Count - 1)) / 2;
+                return sets.Distinct(new ArrayComparer()).Count() == expectedResult;
             }
         }
     }

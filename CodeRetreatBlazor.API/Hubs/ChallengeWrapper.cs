@@ -31,7 +31,7 @@ namespace CodeRetreatBlazor.API.Hubs
 
         private TeamChallengeScore CreateNewTeamChallengeScore()
         {
-            return new TeamChallengeScore(TeamId, ChallengeId);
+            return new TeamChallengeScore(ChallengeId, TeamId);
         }
 
         public void SetChallenge(TChallenge challenge)

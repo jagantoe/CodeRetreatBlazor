@@ -1,9 +1,11 @@
 using CodeRetreatBlazor.API.Hubs;
 using CodeRetreatBlazor.API.Hubs.InfiniteDoorsHub;
+using CodeRetreatBlazor.API.Hubs.RoundRobinHub;
 using CodeRetreatBlazor.App.Services;
 using CodeRetreatBlazor.DataAccess;
 using CodeRetreatBlazor.Service;
 using CodeRetreatBlazor.Service.InfiniteDoors;
+using CodeRetreatBlazor.Service.RoundRobin;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -35,8 +37,11 @@ namespace CodeRetreatBlazor.API
             services.AddSignalR(options =>
             {
                 options.EnableDetailedErrors = true;
+                options.MaximumReceiveMessageSize = null;
             });
+
             services.AddSingleton<ChallengeManager<InfinitePrimeDoorChallenge>>();
+            services.AddSingleton<ChallengeManager<RoundRobinChallenge>>();
 
             //Blazor
             services.AddRazorPages();
@@ -82,6 +87,7 @@ namespace CodeRetreatBlazor.API
             {
                 endpoints.MapControllers();
                 endpoints.MapHub<InfiniteDoorsHub>("hub/infinitedoors");
+                endpoints.MapHub<RoundRobinHub>("hub/keycombinations");
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });

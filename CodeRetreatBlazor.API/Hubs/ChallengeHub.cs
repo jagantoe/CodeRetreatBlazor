@@ -61,6 +61,11 @@ namespace CodeRetreatBlazor.API.Hubs
             }
         }
 
+        protected void Save()
+        {
+            challengeWrapper.Save();
+        }
+
         public abstract Task StartChallengeAsync();
     }
 }
