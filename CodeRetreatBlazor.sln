@@ -3,17 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeRetreatBlazor", "CodeRetreatBlazor\CodeRetreatBlazor.csproj", "{C85F7534-0D80-4C28-BF5B-6A19AEC78B18}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeRetreatBlazor.DataAccess", "CodeRetreatBlazor.DataAccess\CodeRetreatBlazor.DataAccess.csproj", "{B2E5D562-3E50-4AEE-B1C4-E5B7E242C9FC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeRetreatBlazor.Domain", "CodeRetreatBlazor.Domain\CodeRetreatBlazor.Domain.csproj", "{8B6D22A8-B6F1-438E-BF56-20F9EB2B476F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeRetreatBlazor.Service", "CodeRetreatBlazor.Service\CodeRetreatBlazor.Service.csproj", "{73D5209E-F887-41C5-A7DD-EF45E6924433}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeRetreatBlazor.App", "CodeRetreatBlazor.App\CodeRetreatBlazor.App.csproj", "{3B904C12-7836-4272-8A35-29C57DAE6C48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeRetreatBlazor.App", "CodeRetreatBlazor.App\CodeRetreatBlazor.App.csproj", "{3B904C12-7836-4272-8A35-29C57DAE6C48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeRetreatBlazor.API", "CodeRetreatBlazor.API\CodeRetreatBlazor.API.csproj", "{F5EA444F-1441-484A-938D-00842DB555BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeRetreatBlazor.API", "CodeRetreatBlazor.API\CodeRetreatBlazor.API.csproj", "{F5EA444F-1441-484A-938D-00842DB555BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C85F7534-0D80-4C28-BF5B-6A19AEC78B18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C85F7534-0D80-4C28-BF5B-6A19AEC78B18}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C85F7534-0D80-4C28-BF5B-6A19AEC78B18}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C85F7534-0D80-4C28-BF5B-6A19AEC78B18}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B2E5D562-3E50-4AEE-B1C4-E5B7E242C9FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B2E5D562-3E50-4AEE-B1C4-E5B7E242C9FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2E5D562-3E50-4AEE-B1C4-E5B7E242C9FC}.Release|Any CPU.ActiveCfg = Release|Any CPU

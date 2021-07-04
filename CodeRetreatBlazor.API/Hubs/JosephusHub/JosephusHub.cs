@@ -1,21 +1,22 @@
-﻿using CodeRetreatBlazor.Service.RoundRobin;
+﻿using CodeRetreatBlazor.Service.Josephus;
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 
-namespace CodeRetreatBlazor.API.Hubs.RoundRobinHub
+namespace CodeRetreatBlazor.API.Hubs.JosephusHub
 {
-    public class RoundRobinHub : ChallengeHub<RoundRobinChallenge>
+    public class JosephusHub : ChallengeHub<JosephusChallenge>
     {
-        private RoundRobinDTO Level => new RoundRobinDTO(Challenge);
-        public RoundRobinHub(ChallengeManager<RoundRobinChallenge> challengeManager) : base(2, challengeManager)
+        private JosephusDTO Level => new JosephusDTO(Challenge);
+        public JosephusHub(ChallengeManager<JosephusChallenge> challengeManager) : base(3, challengeManager)
         {
+
         }
 
-        public async Task OpenDoors(int[][][] combinations)
+        public async Task LastPirate(int pirate)
         {
             if (!Challenge.Completed)
             {
-                Challenge.OpenDoor(combinations);
+                Challenge.CheckPirate(pirate);
                 Score.IncrementAttempt();
                 if (Challenge.Completed)
                 {
@@ -27,14 +28,15 @@ namespace CodeRetreatBlazor.API.Hubs.RoundRobinHub
                 }
                 Save();
             }
-            await Clients.Caller.SendAsync("Keys", Level);
+
+            await Clients.Caller.SendAsync("Pirates", Level);
         }
 
         public override async Task StartChallengeAsync()
         {
             if (Challenge == null)
             {
-                ChallengeWrapper.SetChallenge(new RoundRobinChallenge());
+                ChallengeWrapper.SetChallenge(new JosephusChallenge());
             }
             if (Score.Completed)
             {
@@ -43,7 +45,7 @@ namespace CodeRetreatBlazor.API.Hubs.RoundRobinHub
                 Context.Abort();
                 return;
             }
-            await Clients.Caller.SendAsync("Keys", Level);
+            await Clients.Caller.SendAsync("Pirates", Level);
         }
     }
 }

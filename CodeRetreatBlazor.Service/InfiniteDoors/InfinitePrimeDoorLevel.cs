@@ -23,12 +23,12 @@ namespace CodeRetreatBlazor.Service.InfiniteDoors
             if (Time.Second % 2 == 0)
             {
                 AddCorrectDoor(NumberGenerator.GetPrimeNumber);
-                AddWrongDoor(NumberGenerator.GetNonPrimeNumber);
+                AddWrongDoors(NumberGenerator.GetNonPrimeNumber);
             }
             else
             {
                 AddCorrectDoor(NumberGenerator.GetNonPrimeNumber);
-                AddWrongDoor(NumberGenerator.GetPrimeNumber);
+                AddWrongDoors(NumberGenerator.GetPrimeNumber);
             }
             RandomizeOrder();
         }
@@ -38,7 +38,7 @@ namespace CodeRetreatBlazor.Service.InfiniteDoors
             CorrectDoor = func();
             Doors.Add(CorrectDoor);
         }
-        private void AddWrongDoor(Func<int> func)
+        private void AddWrongDoors(Func<int> func)
         {
             var amountOfDoors = 2 + (int)Math.Floor(Level / 10.0);
             for (int i = 0; i < amountOfDoors; i++)
@@ -55,7 +55,6 @@ namespace CodeRetreatBlazor.Service.InfiniteDoors
                 var temp = Doors[i];
                 Doors[i] = Doors[index];
                 Doors[index] = temp;
-
             }
         }
 

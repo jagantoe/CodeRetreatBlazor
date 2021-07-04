@@ -5,9 +5,30 @@
     height: 100%;
 }
 
-.map-item {
+.map-item1 {
     display: flex;
     justify-content: center;
-    background-image: url('./assets/map.png');
+    background-image: url('./assets/map1.jpg');
+    background-repeat: round;
+}
+
+.map-item2 {
+    display: flex;
+    justify-content: center;
+    background-image: url('./assets/map2.jpg');
+    background-repeat: round;
+}
+
+.map-item3 {
+    display: flex;
+    justify-content: center;
+    background-image: url('./assets/map3.jpg');
+    background-repeat: round;
+}
+
+.map-item4 {
+    display: flex;
+    justify-content: center;
+    background-image: url('./assets/map4.jpg');
     background-repeat: round;
 }

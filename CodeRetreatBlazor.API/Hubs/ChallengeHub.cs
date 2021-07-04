@@ -42,11 +42,6 @@ namespace CodeRetreatBlazor.API.Hubs
             _challengeManager = challengeManager;
         }
 
-        public ChallengeHub(ChallengeManager<TChallenge> challengeManager)
-        {
-            _challengeManager = challengeManager;
-        }
-
         public async Task StartChallenge(string name, string password)
         {
             var success = await _challengeManager.AddConnection(name, password, Context.ConnectionId, ChallengeId);
@@ -57,13 +52,23 @@ namespace CodeRetreatBlazor.API.Hubs
             else
             {
                 Context.Abort();
-
             }
         }
 
         protected void Save()
         {
             challengeWrapper.Save();
+        }
+
+        protected void DisposeData()
+        {
+            _challengeManager.RemoveChallengeAndConnections(ChallengeWrapper);
+        }
+
+        public override Task OnDisconnectedAsync(System.Exception exception)
+        {
+            _challengeManager.RemoveConnection(Context.ConnectionId);
+            return base.OnDisconnectedAsync(exception);
         }
 
         public abstract Task StartChallengeAsync();

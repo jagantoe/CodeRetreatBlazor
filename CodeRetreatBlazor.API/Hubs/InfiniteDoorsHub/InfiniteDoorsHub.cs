@@ -21,6 +21,10 @@ namespace CodeRetreatBlazor.API.Hubs.InfiniteDoorsHub
                 if (Challenge.Completed)
                 {
                     Score.CompleteChallenge();
+                    Save();
+                    DisposeData();
+                    Context.Abort();
+                    return;
                 }
                 Save();
             }
@@ -30,10 +34,16 @@ namespace CodeRetreatBlazor.API.Hubs.InfiniteDoorsHub
 
         public override async Task StartChallengeAsync()
         {
-            ChallengeWrapper.SetChallenge(new InfinitePrimeDoorChallenge());
+            if (Challenge == null)
+            {
+                ChallengeWrapper.SetChallenge(new InfinitePrimeDoorChallenge());
+            }
             if (Score.Completed)
             {
                 Challenge.Complete();
+                DisposeData();
+                Context.Abort();
+                return;
             }
             await Clients.Caller.SendAsync("Doors", Level);
         }

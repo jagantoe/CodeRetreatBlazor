@@ -1,10 +1,12 @@
 using CodeRetreatBlazor.API.Hubs;
 using CodeRetreatBlazor.API.Hubs.InfiniteDoorsHub;
+using CodeRetreatBlazor.API.Hubs.JosephusHub;
 using CodeRetreatBlazor.API.Hubs.RoundRobinHub;
 using CodeRetreatBlazor.App.Services;
 using CodeRetreatBlazor.DataAccess;
 using CodeRetreatBlazor.Service;
 using CodeRetreatBlazor.Service.InfiniteDoors;
+using CodeRetreatBlazor.Service.Josephus;
 using CodeRetreatBlazor.Service.RoundRobin;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -42,6 +44,7 @@ namespace CodeRetreatBlazor.API
 
             services.AddSingleton<ChallengeManager<InfinitePrimeDoorChallenge>>();
             services.AddSingleton<ChallengeManager<RoundRobinChallenge>>();
+            services.AddSingleton<ChallengeManager<JosephusChallenge>>();
 
             //Blazor
             services.AddRazorPages();
@@ -88,6 +91,7 @@ namespace CodeRetreatBlazor.API
                 endpoints.MapControllers();
                 endpoints.MapHub<InfiniteDoorsHub>("hub/infinitedoors");
                 endpoints.MapHub<RoundRobinHub>("hub/keycombinations");
+                endpoints.MapHub<JosephusHub>("hub/lastmanstanding");
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
             });

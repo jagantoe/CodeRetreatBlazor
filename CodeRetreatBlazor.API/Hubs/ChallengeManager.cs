@@ -42,6 +42,11 @@ namespace CodeRetreatBlazor.API.Hubs
             return connection.ChallengeWrapper;
         }
 
+        public void RemoveConnection(string connectionId)
+        {
+            Connections.RemoveAll(c => c.ConnectionId == connectionId);
+        }
+
         public void RemoveChallengeAndConnections(ChallengeWrapper<TChallenge> ChallengeWrapper)
         {
             Connections.RemoveAll(c => c.ChallengeId == ChallengeWrapper.ChallengeId && c.TeamId == ChallengeWrapper.TeamId);

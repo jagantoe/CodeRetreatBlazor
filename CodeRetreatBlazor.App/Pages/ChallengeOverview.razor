@@ -2,11 +2,17 @@
 
 @if (@Challenge != null)
 {
-	<h1>@Challenge.Name</h1>
-	<h3>@Challenge.Description </h3>
+	<div class="card mt-5">
+		<div class="card-header text-center">
+			<h1 class="fw-bold display-1">@Challenge.Name</h1>
+		</div>
+		<div class="card-body">
+			<p class="card-text text-center display-6">@Challenge.Description</p>
+		</div>
+	</div>
 }
 else
 {
 	<h1>Loading...</h1>
 	<h3>Loading...</h3>
-};
+}

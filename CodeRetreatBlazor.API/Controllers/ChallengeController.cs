@@ -27,5 +27,27 @@ namespace CodeRetreatBlazor.Controllers
             }
             return Ok(challenge);
         }
+
+
+        [HttpGet]
+        [Route("ratings")]
+        public async Task<IActionResult> GetAllChallengesWithRatings()
+        {
+            var challenges = await _challengeContext.Challenges.Include(c => c.Scores).ThenInclude(s => s.Team).ToListAsync();
+            if (challenges == null)
+            {
+                return NotFound();
+            }
+            foreach (var challenge in challenges)
+            {
+                foreach (var score in challenge.Scores)
+                {
+                    score.Team.Scores = null;
+                }
+            }
+            return Ok(challenges);
+        }
+
+        private record Challenges();
     }
 }
